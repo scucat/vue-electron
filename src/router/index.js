@@ -3,11 +3,21 @@ import Todo from '../views/Todo.vue'
 import ColorCard from '../components/Card/ColorCard.vue'
 import Preview from '../views/Preview.vue'
 import WebPage from '../views/WebPage.vue'
+import NewWin from '../views/NewWin.vue'
 const routes = [
+  {
+    path: '/',
+    redirect: '/newwin'
+  },
   {
     path: '/webpage',
     name: 'WebPage',
     component: WebPage
+  },
+  {
+    path: '/newwin',
+    name: 'NewWin',
+    component: NewWin
   },
   {
     path: '/preview',
@@ -15,7 +25,7 @@ const routes = [
     component: Preview
   },
   {
-    path: '/',
+    path: '/card',
     name: 'ColorCard',
     component: ColorCard
   },

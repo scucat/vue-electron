@@ -18,6 +18,12 @@ module.exports = { //多页面打包
       template: 'public/remind.html',
       filename: 'remind.html',
       title: 'Remind Page'
+    },
+    second: {
+      entry: 'src/modules/second/second.js',
+      template: 'public/second.html',
+      filename: 'second.html',
+      title: 'Second Page'
     }
   }
 }

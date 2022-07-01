@@ -2,6 +2,11 @@ import { ref } from 'vue'
 const electron = window.require('electron')
 const { ipcRenderer } = electron
 
+export function openWindow (op) {
+  
+  ipcRenderer.send('openWindow',op)
+}
+
 export function closeMain () {
   ipcRenderer.send('mainWindow:close')
 }

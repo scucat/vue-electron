@@ -41,6 +41,10 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
+ipcMain.on('openWindow', (e,op) => {
+  winManager.openWindow(op)
+})
+
 ipcMain.on('mainWindow:minimize', () => {
   mainWindow.minimize()
 })

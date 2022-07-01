@@ -2,9 +2,10 @@
   <div id="nav">
     <div class="date">{{ dateStr }}</div>
     <div class="nav-text no-drag">
+      <router-link to="/newwin">多窗口</router-link>
       <router-link :to="{path:'/webpage',query: {url: blog_url}}">博客</router-link>
       <router-link to="/preview">文件预览</router-link>
-      <router-link to="/">渐变卡片</router-link>
+      <router-link to="/card">渐变卡片</router-link>
       <router-link to="/todo">待办事项</router-link>
       <router-link to="/finished">已完成</router-link>
     </div>
