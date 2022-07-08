@@ -13,12 +13,14 @@
 <script>
 import { getCurrentInstance } from 'vue'
 import { useTodo, useFinished, useKeepTimes } from '../utils/useData.js'
+
 export default {
   setup () {
     const { proxy } = getCurrentInstance()
     const { todoArray, updateTodo } = useTodo(proxy)
     const { finishedArray, updateFinished } = useFinished(proxy)
     const { keepTimes, updateKeepTimes } = useKeepTimes(proxy)
+
 
     function finishFunc (index) {
       const todos = [...todoArray.value]

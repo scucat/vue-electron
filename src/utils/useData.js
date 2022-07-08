@@ -32,3 +32,14 @@ export function useKeepTimes (proxy) {
     updateKeepTimes
   }
 }
+
+export function useTitle (proxy) {
+  const title = computed(() => proxy.$store.state.title)
+  const updateTitle = (payload) => {
+    proxy.$store.commit('SET_TITLE', payload)
+  }
+  return {
+    title,
+    updateTitle
+  }
+}

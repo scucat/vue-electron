@@ -6,9 +6,13 @@ export default createStore({
   state: {
     todoArray: [],
     finishedArray: [],
-    keepTimes: 0
+    keepTimes: 0,
+    title:"坚持就是胜利"
   },
   mutations: {
+    SET_TITLE: (state, title) => {
+      state.title = title
+    },
     SET_TODO_ARRAY: (state, todoArray) => {
       state.todoArray = todoArray
     },

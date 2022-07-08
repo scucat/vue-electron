@@ -2,48 +2,53 @@
   <div id="nav">
     <div class="date">{{ dateStr }}</div>
     <div class="nav-text no-drag">
+      <router-link tag="a" target="_blank" to="/card">新开窗口</router-link>
+      <router-link to="/xview">XView</router-link>
+      <router-link to="/todopage">TODO</router-link>
       <router-link to="/newwin">多窗口</router-link>
       <router-link :to="{path:'/webpage',query: {url: blog_url}}">博客</router-link>
       <router-link to="/preview">文件预览</router-link>
       <router-link to="/card">渐变卡片</router-link>
       <router-link to="/todo">待办事项</router-link>
       <router-link to="/finished">已完成</router-link>
+      <router-link to="/setting">应用设置</router-link>
     </div>
     <router-link to="/add" class=" no-drag"><span>新建</span></router-link>
   </div>
-
-  <div class="control">
-    <span class="close no-drag" @click="closeMain" title="关闭">×</span>
-    <span class="min no-drag" @click="minimizeMain" title="最小化">_</span>
-  </div>
+  <title-bar></title-bar>
   <div class="content  no-drag">
     <div class="content-manage">
-      <router-view v-slot="{ Component }">
+      <!-- <router-view v-slot="{ Component }">
         <keep-alive>
           <component :is="Component" />
         </keep-alive>
-      </router-view>
+      </router-view> -->
+      <router-view></router-view>
     </div>
   </div>
 
 </template>
 <script>
 import { closeMain,minimizeMain } from '../../utils/useIPC.js'
+import TitleBar from '../../components/TitleBar.vue'
 export default {
-  setup() {
-    const date = new Date()
-    const blog_url = 'https://scucat.github.io/blog/'
-    const dateStr = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-    return {
-      closeMain,
-      minimizeMain,
-      dateStr,
-      blog_url
-    }
-  }
+    setup() {
+        const date = new Date();
+        const blog_url = "https://scucat.github.io/blog/";
+        const dateStr = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+        return {
+            closeMain,
+            minimizeMain,
+            dateStr,
+            blog_url
+        };
+    },
+    components: { TitleBar }
 }
 </script>
 <style lang="scss">
+// @import '@/styles/button.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -118,37 +123,6 @@ body {
   }
 }
 
-.control {
-  position: absolute;
-  top: 0;
-  left: 200px;
-  right: 0;
-  height: 30px;
-  .min{
-    font-size: 26px;
-    float: right;
-    cursor: pointer;
-    margin-top: -14px;
-    margin-right: 20px;
-    padding-bottom: 10px;
-  }
-  .min:hover{
-    color: gray;
-  }
-
-  .close {
-    text-align: center;
-    font-size: 26px;
-    float: right;
-    margin-right: 16px;
-    cursor: pointer;
-  }
-
-  .close:hover {
-    color: red;
-  }
-}
-
 .content {
   position: absolute;
   top: 30px;
@@ -163,6 +137,24 @@ body {
     height: 100%;
     font-size: 14px;
   }
+}
 
+.transition-3{
+  transition: all 0.3s;
+}
+
+.hover-scale-105:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px #a8a8a8;
+}
+
+
+.float-left{
+  position: relative;
+  float: left;
+}
+.float-right{
+  position: relative;
+  float: right;
 }
 </style>

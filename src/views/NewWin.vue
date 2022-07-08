@@ -5,15 +5,14 @@
 </template>
 <script>
 import { getCurrentInstance } from 'vue'
-import { openWindow } from '../utils/useIPC.js'
-
+import { openWindow } from '@/utils/useIPC.js'
+import { useTitle } from '@/utils/useData.js'
 export default {
   setup () {
     const { proxy } = getCurrentInstance()
-
+    const { updateTitle } = useTitle(proxy)
+    updateTitle("多窗口")
     function finishFunc (index) {
-
-
       proxy.$router.push({
         path: '/finished'
       })

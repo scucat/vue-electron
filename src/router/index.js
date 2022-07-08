@@ -4,10 +4,26 @@ import ColorCard from '../components/Card/ColorCard.vue'
 import Preview from '../views/Preview.vue'
 import WebPage from '../views/WebPage.vue'
 import NewWin from '../views/NewWin.vue'
+import Setting from '../views/Setting.vue'
+import TodoPage from '../views/TodoPage.vue'
+
+import XView from '../views/XView.vue'
+import ButtonView from '../views/ButtonView'
+
 const routes = [
   {
     path: '/',
-    redirect: '/newwin'
+    redirect: '/xview'
+  },
+  {
+    path: '/todopage',
+    name: 'TodoPage',
+    component: TodoPage
+  },
+  {
+    path: '/setting',
+    name: 'Setting',
+    component: Setting
   },
   {
     path: '/webpage',
@@ -43,7 +59,19 @@ const routes = [
     path: '/add',
     name: 'Add',
     component: () => import(/* webpackChunkName: "add" */ '../views/Add.vue')
-  }
+  },
+  {
+    path: '/xview',
+    name:'XView',
+    component:XView,
+    children:[
+      {
+        path: 'button-view',
+        name: 'ButtonView',
+        component: ButtonView
+      },
+    ]
+  },
 ]
 
 const router = createRouter({
